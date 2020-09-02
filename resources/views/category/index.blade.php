@@ -9,15 +9,15 @@
 
             <div class="pull-left">
 
-                <h2>Products</h2>
+                <h2>Category</h2>
 
             </div>
 
             <div class="pull-right">
 
-                @can('product-create')
+                @can('category-create')
 
-                <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
+                <a class="btn btn-success" href="{{ route('category.create') }}"> Create New Category</a>
 
                 @endcan
 
@@ -53,25 +53,25 @@
 
         </tr>
 
-	    @foreach ($products as $product)
+	    @foreach ($categories as $category)
 
 	    <tr>
 
 	        <td>{{ ++$i }}</td>
 
-	        <td>{{ $product->name }}</td>
+	        <td>{{ $category->name }}</td>
 
-	        <td>{{ $product->detail }}</td>
+	        <td>{{ $category->detail }}</td>
 
 	        <td>
 
-                <form action="{{ route('products.destroy',$product->id) }}" method="POST">
+                <form action="{{ route('category.destroy',$category->id) }}" method="POST">
 
-                    <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('category.show',$category->id) }}">Show</a>
 
-                    @can('product-edit')
+                    @can('category-edit')
 
-                    <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
+                    <a class="btn btn-primary" href="{{ route('category.edit',$category->id) }}">Edit</a>
 
                     @endcan
 
@@ -80,7 +80,7 @@
 
                     @method('DELETE')
 
-                    @can('product-delete')
+                    @can('category-delete')
 
                     <button type="submit" class="btn btn-danger">Delete</button>
 
@@ -97,7 +97,7 @@
     </table>
 
 
-    {!! $products->links() !!}
+    {!! $categories->links() !!}
 
 
 @endsection

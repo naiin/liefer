@@ -71,8 +71,8 @@ class ProductController extends Controller
     public function create()
 
     {
-
-        return view('products.create');
+        $categories = Category::get();
+        return view('products.create', compact('categories'));
     }
 
 
@@ -146,11 +146,7 @@ class ProductController extends Controller
 
     {
         $categories = Category::get();
-        $list_categories = array();
-        foreach($categories as $value){
-            $list_categories[$value->id] = $value->name;
-        }
-        return view('products.edit', compact('product', 'list_categories'));
+        return view('products.edit', compact('product', 'categories'));
     }
 
 
@@ -179,13 +175,8 @@ class ProductController extends Controller
             'detail' => 'required',
 
         ]);
-
-
         $product->update($request->all());
-
-
         return redirect()->route('products.index')
-
             ->with('success', 'Product updated successfully');
     }
 

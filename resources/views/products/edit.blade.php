@@ -73,16 +73,14 @@
                     <strong>Category:</strong>
 
                     <br />
+                    <select name="category_id" class="form-control">
+                        @foreach ($categories as $value)
 
-                    {{-- @foreach ($categories as $value) --}}
-
-                        <label>
-                            {{Form::select('size', $list_categories, 'S')}}
-
-                        <br />
-
-                    {{-- @endforeach --}}
-
+                            <option value="{{$value->id}}">
+                                {{$value->name}}
+                            </option>
+                        @endforeach
+                    </select>
                 </div>
 
             </div>
