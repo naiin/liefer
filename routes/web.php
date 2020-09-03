@@ -30,3 +30,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('category','CategoryController');
 
 });
+
+//  Frontend Routes
+Route::get('/shop', 'FrontendControllers\ShopController@index')->name('shop');
